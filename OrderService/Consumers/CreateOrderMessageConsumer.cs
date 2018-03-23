@@ -1,21 +1,21 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
-using Contract;
+using Contract.Messages;
 using MassTransit;
+using OrderService.Events;
 
-namespace OrderService
+namespace OrderService.Consumers
 {
-    public class CreateOrderConsumer : IConsumer<ICreateOrder>
+    public class CreateOrderMessageConsumer : IConsumer<ICreateOrderMessage>
     {
         private readonly OrderRepository _orderRepository;
 
-        public CreateOrderConsumer(OrderRepository orderRepository)
+        public CreateOrderMessageConsumer(OrderRepository orderRepository)
         {
             _orderRepository = orderRepository;
         }
 
-        public Task Consume(ConsumeContext<ICreateOrder> context)
+        public Task Consume(ConsumeContext<ICreateOrderMessage> context)
         {
             var order = context.Message.Order;
 
@@ -23,7 +23,7 @@ namespace OrderService
 
             var newOrder = _orderRepository.CreateNewOrder(order);
 
-            var orderCreated = new OrderCreated()
+            var orderCreated = new OrderCreatedEvent()
             {
                 CorrelationId = context.Message.CorrelationId,
                 Order = newOrder,

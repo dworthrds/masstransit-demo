@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Contract;
+using Contract.Events;
 using MassTransit;
 
-namespace ClientUI
+namespace TcpGateway.Consumers
 {
-    public class PrenoteDeletedConsumer : IConsumer<IPrenoteDeleted>
+    public class PrenoteDeletedEventConsumer : IConsumer<IPrenoteDeletedEvent>
     {
-        public Task Consume(ConsumeContext<IPrenoteDeleted> context)
+        public Task Consume(ConsumeContext<IPrenoteDeletedEvent> context)
         {
             Console.WriteLine($"Notifying UI that Prenote {context.Message.Prenote.FileNumber} has been deleted.");
             return Task.CompletedTask;

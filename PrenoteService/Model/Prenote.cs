@@ -1,7 +1,6 @@
-﻿using System;
-using Contract;
+﻿using Contract.Model;
 
-namespace PrenoteService
+namespace PrenoteService.Model
 {
     public class Prenote : IPrenote
     {

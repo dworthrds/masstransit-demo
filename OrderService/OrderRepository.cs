@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using Contract;
+using Contract.Model;
 
 namespace OrderService
 {

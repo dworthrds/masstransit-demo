@@ -1,9 +1,10 @@
 ﻿using System;
-using Contract;
+using Contract.Events;
+using Contract.Model;
 
-namespace OrderService
+namespace OrderService.Events
 {
-    public class OrderCreated : IOrderCreated
+    public class OrderCreatedEvent : IOrderCreatedEvent
     {
         public Guid CorrelationId { get; set; }
         public IOrder Order { get; set; }

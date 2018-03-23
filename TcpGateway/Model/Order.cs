@@ -1,6 +1,6 @@
-﻿using Contract;
+﻿using Contract.Model;
 
-namespace OrderService
+namespace TcpGateway.Model
 {
     public class Order : IOrder
     {

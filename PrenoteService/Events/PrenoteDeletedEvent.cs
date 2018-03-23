@@ -1,9 +1,10 @@
 ﻿using System;
-using Contract;
+using Contract.Events;
+using Contract.Model;
 
-namespace PrenoteService
+namespace PrenoteService.Events
 {
-    public class PrenoteDeleted : IPrenoteDeleted
+    public class PrenoteDeletedEvent : IPrenoteDeletedEvent
     {
         public Guid CorrelationId { get; set; }
         public IPrenote Prenote { get; set; }

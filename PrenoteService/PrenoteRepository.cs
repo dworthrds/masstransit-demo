@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
 using Contract;
+using Contract.Model;
+using PrenoteService.Model;
 
 namespace PrenoteService
 {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfClient", "ClientUI\WpfClient.csproj", "{5365CE4D-F890-4498-951A-4FC7F6E2C491}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpGateway", "TcpGateway\TcpGateway.csproj", "{5365CE4D-F890-4498-951A-4FC7F6E2C491}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration", "Configuration\Configuration.csproj", "{6D1AAD2A-D6E0-4BA2-BFAC-2FAD6D78DC2F}"
 EndProject

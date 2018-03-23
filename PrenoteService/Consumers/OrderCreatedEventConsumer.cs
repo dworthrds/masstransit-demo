@@ -1,29 +1,28 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Threading;
 using System.Threading.Tasks;
-using Contract;
+using Contract.Events;
 using MassTransit;
+using PrenoteService.Events;
 
-namespace PrenoteService
+namespace PrenoteService.Consumers
 {
-    public class OrderCreatedConsumer : IConsumer<IOrderCreated>
+    public class OrderCreatedEventConsumer : IConsumer<IOrderCreatedEvent>
     {
         private readonly PrenoteRepository _prenoteRepository;
 
-        public OrderCreatedConsumer(PrenoteRepository prenoteRepository)
+        public OrderCreatedEventConsumer(PrenoteRepository prenoteRepository)
         {
             _prenoteRepository = prenoteRepository;
         }
 
-        public Task Consume(ConsumeContext<IOrderCreated> context)
+        public Task Consume(ConsumeContext<IOrderCreatedEvent> context)
         {
             var createdOrder = context.Message.Order;
             Console.WriteLine($"Received OrderCreated: {createdOrder.OrderNumber}");
 
             var prenote = _prenoteRepository.DeletePrenote(createdOrder.PrenoteFileNumber);
 
-            var prenoteDeleted = new PrenoteDeleted()
+            var prenoteDeleted = new PrenoteDeletedEvent()
             {
                 Prenote = prenote,
                 CorrelationId = context.Message.CorrelationId

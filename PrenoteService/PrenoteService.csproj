@@ -83,12 +83,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderCreatedConsumer.cs" />
-    <Compile Include="Prenote.cs" />
-    <Compile Include="PrenoteDeleted.cs" />
+    <Compile Include="Consumers\OrderCreatedEventConsumer.cs" />
+    <Compile Include="Model\Prenote.cs" />
+    <Compile Include="Events\PrenoteDeletedEvent.cs" />
     <Compile Include="PrenoteRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBusManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

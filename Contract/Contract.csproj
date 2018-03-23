@@ -56,12 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICreateOrder.cs" />
-    <Compile Include="IDeletePrenote.cs" />
-    <Compile Include="IOrder.cs" />
-    <Compile Include="IOrderCreated.cs" />
-    <Compile Include="IPrenote.cs" />
-    <Compile Include="IPrenoteDeleted.cs" />
+    <Compile Include="Messages\ICreateOrderMessage.cs" />
+    <Compile Include="Messages\IDeletePrenoteMessage.cs" />
+    <Compile Include="Model\IOrder.cs" />
+    <Compile Include="Events\IOrderCreatedEvent.cs" />
+    <Compile Include="Model\IPrenote.cs" />
+    <Compile Include="Events\IPrenoteDeletedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

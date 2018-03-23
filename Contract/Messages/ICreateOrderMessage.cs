@@ -1,9 +1,10 @@
 ﻿using System;
+using Contract.Model;
 using MassTransit;
 
-namespace Contract
+namespace Contract.Messages
 {
-    public interface ICreateOrder : CorrelatedBy<Guid>
+    public interface ICreateOrderMessage : CorrelatedBy<Guid>
     {
         IOrder Order { get; }
         DateTime When { get; }

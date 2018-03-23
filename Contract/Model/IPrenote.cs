@@ -1,5 +1,5 @@
 ﻿
-namespace Contract
+namespace Contract.Model
 {
     public interface IPrenote
     {

@@ -1,9 +1,10 @@
 ﻿using System;
-using Contract;
+using Contract.Messages;
+using Contract.Model;
 
-namespace ClientUI
+namespace TcpGateway.Messages
 {
-    public class CreateOrder : ICreateOrder
+    public class CreateOrderMessage : ICreateOrderMessage
     {
         public Guid CorrelationId { get; set; }
         public IOrder Order { get; set; }

@@ -1,36 +1,22 @@
 ﻿using System;
-using Configuration;
-using Contract;
-using MassTransit;
-using MassTransit.Log4NetIntegration.Logging;
+using Contract.Messages;
+using TcpGateway.Messages;
+using TcpGateway.Model;
 
-namespace ClientUI
+namespace TcpGateway
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Log4NetLogger.Use();
-            var bus = BusInitializer.CreateBus(cfg =>
-            {
-                cfg.ReceiveEndpoint("OrderCreated_Client", e =>
-                {
-                    e.Consumer<OrderCreatedConsumer>();
-                });
+            ServiceBusManager.Instance.StartBus();
 
-                cfg.ReceiveEndpoint("PrenoteDeleted_Client", e =>
-                {
-                    e.Consumer<PrenoteDeletedConsumer>();
-                });
-            });
-            bus.Start();
+            RunLoop();
 
-            RunLoop(bus);
-
-            bus.Stop();
+            ServiceBusManager.Instance.StopBus();
         }
 
-        static void RunLoop(IBusControl bus)
+        static void RunLoop()
         {
             while (true)
             {
@@ -47,7 +33,7 @@ namespace ClientUI
                             PrenoteFileNumber = 789789
                         };
 
-                        var createOrder = new CreateOrder()
+                        var createOrder = new CreateOrderMessage()
                         {
                             CorrelationId = Guid.NewGuid(),
                             Order = order,
@@ -55,7 +41,7 @@ namespace ClientUI
                         };
 
                         Console.WriteLine($"Sending CreateOrder command, OrderNumber = {order.OrderNumber}");
-                        bus.Publish<ICreateOrder>(createOrder);
+                        ServiceBusManager.Instance.BusControl.Publish<ICreateOrderMessage>(createOrder);
                         break;
 
                     case ConsoleKey.Q:

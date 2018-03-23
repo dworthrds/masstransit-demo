@@ -1,9 +1,10 @@
 ﻿using System;
+using Contract.Model;
 using MassTransit;
 
-namespace Contract
+namespace Contract.Messages
 {
-    public interface IPrenoteDeleted : CorrelatedBy<Guid>
+    public interface IDeletePrenoteMessage : CorrelatedBy<Guid>
     {
         IPrenote Prenote { get; }
         DateTime When { get; }
