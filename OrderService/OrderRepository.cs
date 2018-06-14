@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Threading;
-using Contract;
-using Contract.Model;
 
 namespace OrderService
 {
     public class OrderRepository
     {
-        public IOrder CreateNewOrder(IOrder order)
+        public string CreateNewOrder(string order)
         {
             Console.WriteLine("Creating Order...");
             Thread.Sleep(1000);

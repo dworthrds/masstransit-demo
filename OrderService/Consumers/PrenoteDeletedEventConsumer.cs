@@ -9,7 +9,7 @@ namespace OrderService.Consumers
     {
         public Task Consume(ConsumeContext<IPrenoteDeletedEvent> context)
         {
-            Console.WriteLine($"Notifying OrderService that Prenote {context.Message.Prenote.FileNumber} has been deleted.");
+            Console.WriteLine($"Notifying OrderService that Prenote {context.Message.PrenoteJson} has been deleted.");
             return Task.CompletedTask;
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System;
 using Contract.Messages;
 using TcpGateway.Messages;
-using TcpGateway.Model;
 
 namespace TcpGateway
 {
@@ -27,20 +26,15 @@ namespace TcpGateway
                 switch (key.Key)
                 {
                     case ConsoleKey.O:
-                        var order = new Order
-                        {
-                            OrderNumber = 123456,
-                            PrenoteFileNumber = 789789
-                        };
-
+                        
                         var createOrder = new CreateOrderMessage()
                         {
                             CorrelationId = Guid.NewGuid(),
-                            Order = order,
+                            OrderJson = "OrderNumber:2354",
                             When = DateTime.Now
                         };
 
-                        Console.WriteLine($"Sending CreateOrder command, OrderNumber = {order.OrderNumber}");
+                        Console.WriteLine($"Sending CreateOrder command, OrderNumber = {createOrder.OrderJson}");
                         ServiceBusManager.Instance.BusControl.Publish<ICreateOrderMessage>(createOrder);
                         break;
 

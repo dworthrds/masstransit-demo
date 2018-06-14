@@ -1,12 +1,11 @@
 ﻿using System;
-using Contract.Model;
 using MassTransit;
 
 namespace Contract.Events
 {
     public interface IPrenoteDeletedEvent : CorrelatedBy<Guid>
     {
-        IPrenote Prenote { get; }
+        string PrenoteJson { get; }
         DateTime When { get; }
     }
 }

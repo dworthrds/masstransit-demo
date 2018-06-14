@@ -9,7 +9,7 @@ namespace TcpGateway.Consumers
     {
         public Task Consume(ConsumeContext<IPrenoteDeletedEvent> context)
         {
-            Console.WriteLine($"Notifying UI that Prenote {context.Message.Prenote.FileNumber} has been deleted.");
+            Console.WriteLine($"Notifying UI that Prenote {context.Message.PrenoteJson} has been deleted.");
             return Task.CompletedTask;
         }
     }

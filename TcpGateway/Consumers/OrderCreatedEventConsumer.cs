@@ -9,7 +9,7 @@ namespace TcpGateway.Consumers
     {
         public Task Consume(ConsumeContext<IOrderCreatedEvent> context)
         {
-            Console.WriteLine($"Notifying UI that Order {context.Message.Order.OrderNumber} has been created.");
+            Console.WriteLine($"Notifying UI that Order {context.Message.OrderJson} has been created.");
             return Task.CompletedTask;
         }
     }

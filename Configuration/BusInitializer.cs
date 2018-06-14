@@ -1,6 +1,7 @@
 ﻿using System;
 using MassTransit;
 using MassTransit.RabbitMqTransport;
+using Newtonsoft.Json;
 
 namespace Configuration
 {

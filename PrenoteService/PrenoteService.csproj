@@ -84,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Consumers\OrderCreatedEventConsumer.cs" />
-    <Compile Include="Model\Prenote.cs" />
     <Compile Include="Events\PrenoteDeletedEvent.cs" />
     <Compile Include="PrenoteRepository.cs" />
     <Compile Include="Program.cs" />
@@ -101,7 +100,7 @@
       <Name>Configuration</Name>
     </ProjectReference>
     <ProjectReference Include="..\Contract\Contract.csproj">
-      <Project>{94ba7813-1f44-4259-8468-a7315a1c4618}</Project>
+      <Project>{577DEF13-1046-4BB6-8B14-D0FE78AE7F28}</Project>
       <Name>Contract</Name>
     </ProjectReference>
   </ItemGroup>

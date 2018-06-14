@@ -17,14 +17,14 @@ namespace PrenoteService.Consumers
 
         public Task Consume(ConsumeContext<IOrderCreatedEvent> context)
         {
-            var createdOrder = context.Message.Order;
-            Console.WriteLine($"Received OrderCreated: {createdOrder.OrderNumber}");
+            var createdOrder = context.Message.OrderJson;
+            Console.WriteLine($"Received OrderCreated: {createdOrder}");
 
-            var prenote = _prenoteRepository.DeletePrenote(createdOrder.PrenoteFileNumber);
+            var prenote = _prenoteRepository.DeletePrenote(54);
 
             var prenoteDeleted = new PrenoteDeletedEvent()
             {
-                Prenote = prenote,
+                PrenoteJson = prenote,
                 CorrelationId = context.Message.CorrelationId
             };
             return context.Publish(prenoteDeleted);

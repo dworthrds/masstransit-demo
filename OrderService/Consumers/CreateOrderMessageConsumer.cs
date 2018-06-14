@@ -17,16 +17,16 @@ namespace OrderService.Consumers
 
         public Task Consume(ConsumeContext<ICreateOrderMessage> context)
         {
-            var order = context.Message.Order;
+            var order = context.Message.OrderJson;
 
-            Console.WriteLine($"Received CreateOrder: {order.OrderNumber}");
+            Console.WriteLine($"Received CreateOrder: {order}");
 
             var newOrder = _orderRepository.CreateNewOrder(order);
 
             var orderCreated = new OrderCreatedEvent()
             {
                 CorrelationId = context.Message.CorrelationId,
-                Order = newOrder,
+                OrderJson = newOrder,
                 When = DateTime.Now
             };
             return context.Publish(orderCreated);
